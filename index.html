@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martins gems</title>
+    <img src="img/background.png">
+
+
+
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(42, 77, 14);
+
+
+
+        }
+
+        .chestandbag {
+            display: flex;
+            flex-direction: column (1fr 1fr);
+        }
+
+        .lid {
+            display: block;
+            background-color: blanchedalmond;
+            border: 2% solid black;
+            height: 40%;
+            width: 40%;
+            padding-top: 1%;
+            text-align: center;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+
+        .chest {
+
+            display: grid;
+            border: 50px rgb(255, 248, 248);
+            background-color: rgb(61, 24, 24);
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas:
+                'slo1 slot2 slot3'
+                'slot4 slot5 slot6'
+                'slot7 slot8 slot9'
+            ;
+            height: 95%;
+            width: 95%;
+            margin: 10px;
+            margin-right: 30%;
+            align-self: flex-start;
+
+        }
+
+        .bag {
+
+            display: grid;
+            border: 50px rgb(255, 248, 248);
+            background-color: rgb(61, 24, 24);
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas:
+                'slot1 slot2 slot3'
+                'slot4 slot5 slot6'
+                'slot7 slot8 slot9'
+            ;
+            height: 95%;
+            width: 95%;
+            margin: 10px;
+            align-self: flex-start;
+
+        }
+
+        .chest>div {
+            background-color: burlywood;
+            text-align: center;
+
+            border: 10px rgb(212, 15, 15);
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .bag>div {
+            background-color: burlywood;
+            text-align: center;
+
+            border: 10px rgb(212, 15, 15);
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    ░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗
+    ░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝
+    ░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░
+    ░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░
+    ░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗
+    ░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝
+    <div class="chestandbag">
+        <div class="lid"> 
+            <div class="openChest" onclick="ToggleChest();">
+                <img id="chestImage" src="img/closedChest.png" style="width: 50px; height: 50px;">
+            </div>
+            <div class="chest" id="chestContent" style="display: none;">
+                <div id="spade" onclick="flyttItem(this, 'spade', 'slot1')">spade</div>
+                <div id="blomst" onclick="flyttItem(this, 'blomst', 'slot2')">blomst</div>
+                <div id="hatt" onclick="flyttItem(this, 'hatt', 'slot3')">hatt</div>
+                <div id="skull" onclick="flyttItem(this, 'skull', 'slot4')">skull</div>
+                <div id="horse" onclick="flyttItem(this, 'horse', 'slot5')">horse</div>
+                <div id="hammer" onclick="flyttItem(this, 'hammer', 'slot6')">hammer</div>
+                <div id="rock" onclick="flyttItem(this, 'rock', 'slot7')">rock</div>
+                <div id="gold" onclick="flyttItem(this, 'gold', 'slot8')">gold</div>
+                <div id="sword" onclick="flyttItem(this, 'sword', 'slot9')">sword</div>
+
+
+            </div>
+        </div>
+
+        <div class="lid">
+
+            <div class="OpenBag" onclick="ToggleBag();">
+                <img id="BagImage" src="img/BackPack.Closed.png" alt="Closed Bag" style="width: 50px; height: 50px;">
+
+            </div>
+
+            <div>
+                <div class="bag" id="BagContent" style="display: none;">
+
+                    <div id="slot1">1</div>
+                    <div id="slot2">2</div>
+                    <div id="slot3">3</div>
+                    <div id="slot4">4</div>
+                    <div id="slot5">5</div>
+                    <div id="slot6">6</div>
+                    <div id="slot7">7</div>
+                    <div id="slot8">8</div>
+                    <div id="slot9">9</div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        function ToggleChest(){
+                    var chestContent = document.getElementById("chestContent");
+                    var chestImage = document.getElementById("chestImage");
+
+                    if (chestContent.style.display === "none") {
+                        chestContent.style.display = "grid";
+                        chestImage.src = "img/openChest.png";
+                    } else {
+                        chestContent.style.display = "none";
+                        chestImage.src = "img/closedChest.png";
+                    }
+                }
+
+        function ToggleBag() {
+            
+                    var BagContent = document.getElementById("BagContent");
+                    var BagImage = document.getElementById("BagImage");
+                    
+                    if (BagContent.style.display === "none") {
+                        BagContent.style.display = "grid";
+                        BagContent.style.src = "img/BackPack.Open.png";
+                    } else {
+                        BagContent.style.display = "none";
+                        BagImage.src = "img/BackPack.Closed.png";
+
+                    }
+
+                }        
+                
+        // flytt ITEM
+        function flyttItem(element, item, newitemid) {
+             
+             element.innerHTML = '';
+             document.getElementById(newitemid).innerHTML = /*HTML*/`
+           
+             <div id="${item}" onclick="flyttItemut(this, '${item}')">
+                <img src="img${item}.png"/></div>
+                `;
+         }
+
+    
+
+        function flyttItemut(element, item) {
+             element.innerHTML = '';
+             document.getElementById(item).innerHTML = /*HTML*/`
+             
+             <div onclick="flyttItem(this, item, newitemid)"><img src="img\${item}.png"/></div>`;
+       
+         }
+       
+
+
+    //     // flytt blomst inn
+    //     function flyttBlomst() {
+    //         blankBlomst()
+    //         document.getElementById('slot2').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttBlomstINV()">blomst</div>`;
+    //     }
+
+    //     function blankBlomst() {
+    //         document.getElementById('blomst').innerHTML = '';
+    //     }
+
+    //     // flytt blomst ut
+    //     function flyttBlomstINV() {
+    //         blankBlomstINV()
+    //         document.getElementById('blomst').innerHTML = "blomst"
+    //     }
+
+    //     function blankBlomstINV() {
+    //         document.getElementById('slot2').innerHTML = "";
+    //     }
+
+
+
+    //     // flytt hatt inn
+    //     function flyttHatt() {
+    //         blankHatt()
+    //         document.getElementById('slot3').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttHattINV()">hatt</div>`;
+    //     }
+
+    //     function blankHatt() {
+    //         document.getElementById('hatt').innerHTML = '';
+    //     }
+
+    //     // flytt hatt ut
+    //     function flyttHattINV() {
+    //         blankHattINV()
+    //         document.getElementById('hatt').innerHTML = "hatt"
+    //     }
+
+    //     function blankBlomstINV() {
+    //         document.getElementById('slot3').innerHTML = "";
+    //     }
+      
+
+    //   // flytt skull inn
+    //   function flyttSkull() {
+    //         blankSkull()
+    //         document.getElementById('slot4').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttSkullINV()">skull</div>`;
+    //     }
+
+    //     function blankSkull() {
+    //         document.getElementById('skull').innerHTML = '';
+    //     }
+
+    //     // flytt skull ut
+    //     function flyttSkullINV() {
+    //         blankSkullINV()
+    //         document.getElementById('skull').innerHTML = "skull"
+    //     }
+
+    //     function blankSkullINV() {
+    //         document.getElementById('slot4').innerHTML = "";
+    //     }
+
+
+    //     // flytt horse inn
+    //     function flyttHorse() {
+    //         blankHorse()
+    //         document.getElementById('slot5').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttHorseINV()">horse</div>`;
+    //     }
+
+    //     function blankHorse() {
+    //         document.getElementById('horse').innerHTML = '';
+    //     }
+
+    //     // flytt horse ut
+    //     function flyttHorseINV() {
+    //         blankHorseINV()
+    //         document.getElementById('horse').innerHTML = "horse"
+    //     }
+
+    //     function blankHorseINV() {
+    //         document.getElementById('slot5').innerHTML = "";
+    //     }
+       
+       
+    //     // flytt hammer inn
+    //     function flyttHammer() {
+    //         blankHammer()
+    //         document.getElementById('slot6').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttHammerINV()">hammer</div>`;
+    //     }
+
+    //     function blankHammer() {
+    //         document.getElementById('hammer').innerHTML = '';
+    //     }
+
+    //     // flytt hammer ut
+    //     function flyttHammerINV() {
+    //         blankHammerINV()
+    //         document.getElementById('hammer').innerHTML = "hammer"
+    //     }
+
+    //     function blankHammerINV() {
+    //         document.getElementById('slot6').innerHTML = "";
+    //     }
+
+
+        
+    //     // flytt rock inn
+    //     function flyttRock() {
+    //         blankRock()
+    //         document.getElementById('slot7').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttRockINV()">rock</div>`;
+    //     }
+
+    //     function blankRock() {
+    //         document.getElementById('rock').innerHTML = '';
+    //     }
+
+    //     // flytt rock ut
+    //     function flyttRockINV() {
+    //         blankRockINV()
+    //         document.getElementById('rock').innerHTML = "rock"
+    //     }
+
+    //     function blankRockINV() {
+    //         document.getElementById('slot7').innerHTML = "";
+    //     }
+
+
+        
+    //     // flytt gold inn
+    //     function flyttGold() {
+    //         blankGold()
+    //         document.getElementById('slot8').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttGoldINV()">gold</div>`;
+    //     }
+
+    //     function blankGold() {
+    //         document.getElementById('gold').innerHTML = '';
+    //     }
+
+    //     // flytt gold ut
+    //     function flyttGoldINV() {
+    //         blankGoldINV()
+    //         document.getElementById('gold').innerHTML = "gold"
+    //     }
+
+    //     function blankGoldINV() {
+    //         document.getElementById('slot8').innerHTML = "";
+    //     }
+      
+      
+      
+    //     // flytt sword inn
+    //     function flyttSword() {
+    //         blankSword()
+    //         document.getElementById('slot9').innerHTML = /*HTML*/`
+            
+    //         <div onclick="flyttSwordINV()">sword</div>`;
+    //     }
+
+    //     function blankSword() {
+    //         document.getElementById('sword').innerHTML = '';
+    //     }
+
+    //     // flytt sword ut
+    //     function flyttSwordINV() {
+    //         blankSwordINV()
+    //         document.getElementById('sword').innerHTML = "sword"
+    //     }
+
+    //     function blankSwordINV() {
+    //         document.getElementById('slot9').innerHTML = "";
+    //     }
+
+
+        
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+.container {
+    background-color: brown;
+    width: 300px;
+    border:15px;
+    padding:50px;
+    margin:20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:aliceblue
+}
+.background {
+    background-image: ulr("background.png");
+    background-size: cover;
+    height: 100vh; /* 100% of the viewport height */
+    width: 100%;
+}
